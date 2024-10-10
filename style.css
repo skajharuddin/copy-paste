@@ -1,0 +1,38 @@
+body {
+  background: linear-gradient(to bottom right, #33ccff, #ff99cc);
+  height: 100vh;
+}
+
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: sticky;
+}
+
+.container {
+  margin-top: 100px;
+}
+
+.card-body {
+  position: relative;
+}
+
+#copySuccess {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transition: opacity 0.5s;
+  color: green;
+}
