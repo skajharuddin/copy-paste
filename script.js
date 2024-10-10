@@ -4,7 +4,10 @@ copyBtn.addEventListener('click', () => {
   let copiedText = value.repeat(copyCount.value);
 
   // Copy the text inside the text field
-  navigator.clipboard.writeText(copiedText);
+  // navigator.clipboard.writeText(copiedText);
+
+    inputText.select();
+  document.execCommand('copy');
 
   // print in console
   console.log(copiedText + ' ');
