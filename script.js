@@ -6,7 +6,7 @@ copyBtn.addEventListener('click', () => {
   // Copy the text inside the text field
   // navigator.clipboard.writeText(copiedText);
 
-    inputText.select();
+  inputText.select();
   document.execCommand('copy');
 
   // print in console
