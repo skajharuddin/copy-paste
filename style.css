@@ -19,6 +19,9 @@ body {
   bottom: 0;
   width: 100%;
   display: sticky;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 .container {
@@ -35,4 +38,8 @@ body {
   right: 0;
   transition: opacity 0.5s;
   color: green;
+}
+
+.footer-text {
+  margin: 0;
 }
