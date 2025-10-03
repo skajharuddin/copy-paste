@@ -1,19 +1,38 @@
+const copyBtn = document.getElementById('copyBtn');
+const inputText = document.getElementById('inputText');
+const copyCount = document.getElementById('copyCount');
+const copySuccess = document.getElementById('copySuccess');
+const newlineCheckbox = document.getElementById('newlineCheckbox');
+const slashCheckbox = document.getElementById('slashCheckbox');
+
 copyBtn.addEventListener('click', () => {
-  const checkbox = document.getElementById('newlineCheckbox');
-  const value = inputText.value;
+  const value = inputText.value.trim();
   const count = parseInt(copyCount.value) || 1;
 
-  // Use space if checkbox is not checked by user
-  const separator = checkbox.checked ? '\n' : ' ';
+  // Empty input check
+  if (!value) {
+    copySuccess.innerText = '⚠️ Please enter some text to copy!';
+    return;
+  }
 
-  // using join insted of Repeat
+  // Separator logic
+  let separator = '';
+  if (newlineCheckbox.checked) separator += '\n';
+  if (slashCheckbox.checked) separator += '/';
+  if (!separator) separator = ' '; // default space if none checked
+
+  // Generate copied text
   const copiedText = Array(count).fill(value).join(separator);
 
-  // Copy to Clipboard
-  navigator.clipboard.writeText(copiedText);
-
-  // Console and alert
-  console.log(copiedText);
-  alert(`Your text "${value}" is copied ${count} times!`);
-  copySuccess.innerText = 'Copy Completed!!!';
+  // Copy to clipboard
+  navigator.clipboard
+    .writeText(copiedText)
+    .then(() => {
+      copySuccess.innerText = `✅ Your text is copied ${count} times!`;
+      console.log(copiedText);
+    })
+    .catch((err) => {
+      copySuccess.innerText = '❌ Failed to copy!';
+      console.error(err);
+    });
 });
