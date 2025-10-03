@@ -10,6 +10,10 @@ body {
   text-align: center;
 }
 
+.heading {
+  background: linear-gradient(to bottom right, #ff99cc, #33ccff);
+}
+
 .footer {
   background-color: #333;
   color: #fff;
@@ -44,4 +48,3 @@ body {
 .footer-text {
   margin: 0;
 }
-
