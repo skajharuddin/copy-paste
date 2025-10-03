@@ -36,3 +36,10 @@ copyBtn.addEventListener('click', () => {
       console.error(err);
     });
 });
+
+// Footer Text
+const date = new Date();
+const currentYear = date.getFullYear();
+console.log(currentYear);
+const footerYear = (document.querySelector('#footer_year').textContent =
+  currentYear);
