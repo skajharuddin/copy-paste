@@ -15,26 +15,15 @@ copyBtn.addEventListener('click', () => {
     return;
   }
 
-  let copiedText = '';
+  // Separator logic
+  let separator = '';
+  if (newlineCheckbox.checked) separator += '\n';
+  
+  if (slashCheckbox.checked) separator += '/';
+  if (!separator) separator = ' '; // default space if none checked
 
-  // If newlineCheckbox is Checked (with serial number)
-  if (newlineCheckbox.checked) {
-    const lines = [];
-    for (let i = 1; i <= count; i++) {
-      lines.push(`${i}. ${value}`);
-    }
-    copiedText = lines.join('\n');
-  }
-
-  // If slashCheckbox is Checked
-  else if (slashCheckbox.checked) {
-    copiedText = Array(count).fill(value).join('/');
-  }
-
-  // If every checkbox is blank
-  else {
-    copiedText = Array(count).fill(value).join(' ');
-  }
+  // Generate copied text
+  const copiedText = Array(count).fill(value).join(separator);
 
   // Copy to clipboard
   navigator.clipboard
@@ -48,3 +37,9 @@ copyBtn.addEventListener('click', () => {
       console.error(err);
     });
 });
+
+// Footer Text
+const date = new Date();
+const currentYear = date.getFullYear();
+// console.log(currentYear);
+document.querySelector('#footer_year').textContent = currentYear;
