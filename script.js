@@ -1,18 +1,19 @@
 copyBtn.addEventListener('click', () => {
-  let value = inputText.value + ' ';
+  const checkbox = document.getElementById('newlineCheckbox');
+  const value = inputText.value;
+  const count = parseInt(copyCount.value) || 1;
 
-  let copiedText = value.repeat(copyCount.value);
+  // Use space if checkbox is not checked by user
+  const separator = checkbox.checked ? '\n' : ' ';
 
-  // Copy the text inside the text field
+  // using join insted of Repeat
+  const copiedText = Array(count).fill(value).join(separator);
+
+  // Copy to Clipboard
   navigator.clipboard.writeText(copiedText);
 
-  // copiedText.select();
-  // document.execCommand('copy');
-
-  // print in console
-  console.log(copiedText + ' ');
-
-  alert(`Your text ${value} is copied ${copyCount.value} times!`);
-
+  // Console and alert
+  console.log(copiedText);
+  alert(`Your text "${value}" is copied ${count} times!`);
   copySuccess.innerText = 'Copy Completed!!!';
 });
